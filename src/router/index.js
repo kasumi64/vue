@@ -7,7 +7,7 @@ Vue.use(Router)
 export default new Router({
 	routes: [{
 			path: '/',
-			name: 'charts',
+			name: 'home',
 			component: resolve => require(['../view/charts.vue'], resolve)
 		},
 		{
