@@ -1,7 +1,5 @@
-import HChart from '../components/high_bar.vue'; // 导入chart组件
-//var HChart = require('@/components/high_bar.vue');
-
-var options = {
+//npm uninstall -S -D -O echarts
+module.exports = {
 	bar: {
 		chart: {
 			type: 'column' //指定图表的类型，默认是折线图（line）
@@ -16,7 +14,7 @@ var options = {
 			'#24CBE5'
 		],
 		xAxis: {
-			categories: ['1号', '2号', '3号', '4号', '5号'] //指定x轴分组
+			categories: ['1号', '2号', '3号', '3号', '3号'] //指定x轴分组
 		},
 		yAxis: {
 			title: {
@@ -38,19 +36,3 @@ var options = {
 		}]
 	}
 };
-
-export default {
-	name: 'charts',
-	data() {
-		let bar = options.bar;
-		return {
-			id: 'test',
-			option: bar
-		};
-	},
-	components: {
-		HChart
-	}
-};
-
-;require('./AA.js');

@@ -4,6 +4,8 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import axios from 'axios';
+import kit from './libs/kit.min.js';
+import store from './libs/store.js';
 //import ElementUI from 'element-ui';
 //import 'element-ui/lib/theme-chalk/index.css';
 
@@ -12,9 +14,10 @@ Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
-new Vue({
+window._vm = new Vue({
 	el: '#app',
 	router,
+	store,
 	components: {
 		App
 	},
