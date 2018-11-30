@@ -8,7 +8,7 @@ export default new Router({
 	routes: [{
 			path: '/',
 			name: '/',
-			component: resolve => require(['../view/charts.vue'], resolve)
+			component: resolve => require(['../view/table.vue'], resolve)
 		},
 		{
 			path: '/charts',
@@ -19,6 +19,11 @@ export default new Router({
 			path: '/fcArgs',
 			name: 'fcArgs',
 			component: resolve => require(['../view/fcArgs.vue'], resolve)
+		},
+		{
+			path: '/table',
+			name: 'table',
+			component: resolve => require(['../view/table.vue'], resolve)
 		},
 		{
 			path: '/HelloWorld',
