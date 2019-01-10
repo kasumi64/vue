@@ -1,0 +1,12 @@
+.blueBtn, .defBtn{display: inline-block;min-width: 68px;height: 30px;border-radius: 6px;vertical-align: middle;
+	font-size: 12px;line-height: 30px;padding: 0 10px;}
+.blueBtn{background: #06BFF5;color: #FFF;}
+.blueBtn:hover{background: #17cbff;}
+.blueBtn:active{background: #00b5ea;}
+.defBtn{color: #0DB9EB;border: 1px solid #0DB9EB;}
+.defBtn:active{box-shadow: 0px 0px 1px 0px #0DB9EB;}
+
+.el-popper{z-index: 1 !important;}
+/* MaskLayer */
+.maskLayer{position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(255,255,255,0.5);z-index: 9;}
+.panle{font-size: 16px;color: #06BFF5;line-height: 30px;margin-top: -50px}

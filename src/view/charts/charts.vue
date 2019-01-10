@@ -1,3 +1,6 @@
+<style scoped="scoped">
+	@import url('../../view/charts/charts.css');
+</style>
 <template>
 	<div class="charts" >
 		<button @click="jump">跳转</button>
@@ -10,8 +13,8 @@
 </template>
 
 <script>
-import HChart from '../components/high_bar.vue'; // 导入chart组件
-import options from '../view/charts.js'; // 导入chart组件模拟数据
+import HChart from '../../components/high_bar.vue'; // 导入chart组件
+import options from '../../view/charts/charts.js'; // 导入chart组件模拟数据
 
 	export default {
 		name: 'charts',
@@ -43,8 +46,3 @@ import options from '../view/charts.js'; // 导入chart组件模拟数据
 		}
 	};
 </script>
-
-<style>
-	#test { width: 400px; height: 400px; margin: 40px auto; }
-	.chartTitle{font-size: 16px;margin-bottom: 5px;color: #f00;}
-</style>
