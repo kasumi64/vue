@@ -1,8 +1,10 @@
 <template>
 	<div class="elui">
-		<button class="blueBtn" @click="click1">点击</button>
-		<button class="defBtn" @click="click2">点击</button>
-		<el-autocomplete v-model="inputs" :fetch-suggestions="fetch" placeholder="请输入内容">
+		<div class="btnBox">
+			<button class="blueBtn" @click="click1">点击</button>
+			<button class="defBtn" @click="click2">点击</button>
+		</div>
+		<!--<el-autocomplete v-model="inputs" :fetch-suggestions="fetch" placeholder="请输入内容">
 			<div slot-scope="{ item }">
 				<span class="item">{{ item.label }}</span>
 		 	</div>
@@ -10,10 +12,25 @@
 		<el-select v-model="selects" placeholder="请选择">
 			<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
 			</el-option>
-		</el-select>
+		</el-select>-->
+		<br />
 		<!--<ul class="list">
 			<li v-for="(item, i) in list"><span>{{i}}</span></li>
 		</ul>-->
+		
+		
+		<inputTips :list='list1' v-model='wd' @change='input' :placeholder='disabled'></inputTips>
+		<div style="font-size: 12px;">{{wd}}绑定</div>
+		<inputTips :list='list2' v-model='ZXY' @input='input' :disabled='disabled' :scrollEnd='scrollEnd'></inputTips>
+		
+		<lgy-review :show.sync='ZXY' :review='review' @submit='submit' :txt='wd'></lgy-review>
+		
+		<lgy-wheelReq :parameter="review"></lgy-wheelReq>
+		
+		
+		
+		
+		
 		<el-table :data= "list" @row-click="tableCK" :row-class-name="rowClass" :row-style="highlight">
 			<el-table-column type="index" width="360">
 			 	<template slot-scope="scope">
@@ -21,6 +38,25 @@
 			 	</template>
 		    </el-table-column>
 		</el-table>
+		<!--<div class="maskLayer maskBlack">
+			<div class="tipsPanle">
+				<div class="title">
+					<b>提示</b>
+				</div>
+				<div class="message confirm">
+					<div class="left">
+						<img class="tipsIcon" src="../img/logo.png"/>
+					</div>
+					<div class="right">s=就看见哈市地方</div>
+				</div>
+				<div class="message alert"></div>
+				<div class="footBtn">
+					<button class="blueBtn now">立即下发</button>
+					<button class="blueBtn ok">确定</button>
+					<button class="defBtn canle">取消</button>
+				</div>
+			</div>
+		</div>-->
 	</div>
 </template>
 
@@ -28,7 +64,12 @@
 import utils from '../libs/utils.js';
 import Vue from 'vue';
 
+
 var data = {
+	review: {a:123},
+	wd: 'ABC',
+	ZXY: true,
+	disabled: false,
 	inputs: '',
 	selects: '',
 	list: [],
@@ -40,6 +81,11 @@ var data = {
 		{ value: '北京烤鸭', label: '北京烤鸭' }
 	],
 	getIndex: '',
+	
+	list1: [{lable:'123A'},{lable:'132B'},{lable:'132'},{lable:'132'},{lable:'132'},{lable:'132'},{lable:'132'},{lable:'132'},{lable:'132'}
+	,{lable:'132'},{lable:'132'},{lable:'132'},{lable:'132'},{lable:'132'},{lable:'132'},{lable:'132'},{lable:'132'}],
+	list2: [{lable: 'ABC1'},{lable: 'ABC2'},{lable: 'ABC'},{lable: 'ABC'},{lable: 'ABC'},{lable: 'ABC'},{lable: 'ABC'},{lable: 'ABC'}
+	,{lable: 'ABC'},{lable: 'ABC'},{lable: 'ABC'},{lable: 'ABC'},{lable: 'ABC'},{lable: 'ABC'},{lable: 'ABC'},{lable: 'ABC'}]
 };
 var vm = new Vue();
 var loading
@@ -47,15 +93,40 @@ export default {
 	name: 'elui',
 	data() { return data; },
 	methods:{
+		input(v,e){
+//			console.log('elui--',v);
+		},
+		scrollEnd(){
+			this.list2 = this.list2.concat(this.list1)
+		},
+		submit: function({name}){
+			console.log(name);
+			setTimeout(function(){
+				
+			}, 1000);
+			return 456
+		},
+		
 		fetch(str, cb){
 			cb(this.options)
 		},
 		click1: async function cl(e){
-//			loading = utils.loadShow('.el-autocomplete');
+//			loading = utils.loadShow('.el-table__header');
 //			vm.$loading();
 		
 //			asyncTest();
 			
+			this.review = {uuid: '4562', type:569}
+			
+			return
+			
+			utils.confirm({
+				title:'标题confirm',txt:'confirm内容',
+				ok:e=>{
+//					alert('confirm');
+				},
+				btn: 3
+			});
 		},
 		click2: function cl(e){
 			/*utils.loadShow('.e');
@@ -63,6 +134,15 @@ export default {
 			setTimeout(function(){
 				utils.loadClose()
 			},2000);*/
+			
+			
+			
+			utils.alert({
+				title:'标题alert',txt:'alert内容',
+				ok:e=>{
+//					alert('alert');
+				}
+			}, {now:'now',ok:'ok',cancel:'cancel'});
 		},
 		tableCK(row){
 			this.getIndex = row.index;
@@ -83,8 +163,13 @@ export default {
 			list[i] = {index: i}
 		}
 		this.list = list;
-	}
+	},
+	components: {
+		inputTips: resolve => require(['../components/lgy-candidateWords.vue'], resolve),
+//		review: resolve => require(['../components/lgy-review.vue'], resolve),
+	},
 };
+
 async function asyncTest(){
 		
 	var a= await utils.post({
@@ -92,13 +177,14 @@ async function asyncTest(){
 		method: 'get'
 	}, function(data){
 		console.log('data',data);
-	}).then(function(e){
+	})
+	.then(function(e){
 		console.log('then',e);
 		return e;
 	}).catch(function(e){
 		console.log('e',e)
 		return 'e'+e
-	})
+	});
 	console.log('a', a);
 	
 	var a= await wait().catch(e=>{
@@ -109,7 +195,7 @@ async function asyncTest(){
 function wait(){
 	return new Promise(function(resolve, reject){
 		setTimeout(function(){
-			reject('resolve'+Math.ceil(Math.random()*10) );
+			reject('resolve_'+Math.ceil(Math.random()*10) );
 		}, 3000);
 	});
 }
@@ -125,6 +211,8 @@ function wait(){
 		box-sizing: border-box;
 		overflow-y: auto;*/
 	}
+	.btnBox{padding: 5px;}
+	.btnBox button{margin-right: 5px;}
 	.item{font-size: 16px;}
 	.list{margin-top: 20px;border-top: 1px solid #DCDCDC;}
 	.list li{font-size: 16px;line-height: 30px;border-bottom: 1px solid #DCDCDC;padding-left: 20px;}

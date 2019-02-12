@@ -1,12 +1,33 @@
+body{font-size: 0;}
+.hide{display: none !important;}
+.show{display: block !important;}
+input{font-size: 14px;color: #666;height: 30px;padding: 0 10px;border: 1px solid #D7D8DA;vertical-align: middle;}
+input:focus{border: 2px solid #32ccF9;}
+/*elment-ui*/
+.el-popper{z-index: 1 !important;}
+/*按钮*/
 .blueBtn, .defBtn{display: inline-block;min-width: 68px;height: 30px;border-radius: 6px;vertical-align: middle;
-	font-size: 12px;line-height: 30px;padding: 0 10px;}
+	font-size: 12px;line-height: 30px;padding: 0 10px;min-width: 88px;}
 .blueBtn{background: #06BFF5;color: #FFF;}
 .blueBtn:hover{background: #17cbff;}
 .blueBtn:active{background: #00b5ea;}
-.defBtn{color: #0DB9EB;border: 1px solid #0DB9EB;}
+.defBtn{color: #0DB9EB;border: 1px solid #0DB9EB;background: #FFF;}
 .defBtn:active{box-shadow: 0px 0px 1px 0px #0DB9EB;}
-
-.el-popper{z-index: 1 !important;}
 /* MaskLayer */
-.maskLayer{position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(255,255,255,0.5);z-index: 9;}
-.panle{font-size: 16px;color: #06BFF5;line-height: 30px;margin-top: -50px}
+.maskLayer{position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.5);z-index: 9;}
+.loadPanle{font-size: 16px;color: #06BFF5;line-height: 30px;}
+
+.maskBlack{background: rgba(0,0,0,0.5);}/*rgba(255,255,255,0.5)*/
+.tipsPanle{display: block;margin: 10% auto 0;width: 600px;background: #FFF;border-radius: 4px;}
+.tipsPanle .title{border-bottom: 1px solid #EDEFF4;height: 50px;overflow: hidden;}
+.tipsPanle .title b{font-size: 18px;line-height: 50px;margin-left: 20px;color: #656a73;}
+.tipsPanle .message{text-align: center;}
+.tipsIcon{width: 40px;height: 40px;}
+.tipsPanle .alert {font-size: 0;padding: 40px 0;}
+.tipsPanle .alert > div{display: inline-block;vertical-align: top;max-height: 120px;}
+.tipsPanle .alert .left{width: 110px;text-align: right;padding: 0 30px;}
+.tipsPanle .alert .right{max-width: 488px;padding-right: 40px;font-size: 14px;color: #666;line-height: 24px;text-align: left;overflow: auto;}
+.tipsPanle .confirm {font-size: 14px;color: #666;max-height: 200px;padding: 40px;overflow: auto;}
+.tipsPanle .footBtn{height: 50px;border-top: 1px solid #EDEFF4;text-align: right;padding-top: 10px;}/*#D7D8DA,*/
+.tipsPanle .footBtn button{margin-right: 15px;}
+

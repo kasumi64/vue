@@ -63,7 +63,7 @@ module.exports = {
 		this.currentPage = 1;
 	},
 	components: {
-		paging: { //分布
+		paging: { //分页
 			render(create){
 				var self = this.$parent, vnode = this, slots = this.$slots;
 				
