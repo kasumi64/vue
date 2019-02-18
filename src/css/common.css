@@ -1,10 +1,32 @@
-body{font-size: 0;}
+@charset "utf-8";
+@import url("initTag.min.css");
+#fbcs_file{font-size: 0;}
 .hide{display: none !important;}
 .show{display: block !important;}
 input{font-size: 14px;color: #666;height: 30px;padding: 0 10px;border: 1px solid #D7D8DA;vertical-align: middle;}
 input:focus{border: 2px solid #32ccF9;}
 /*elment-ui*/
 .el-popper{z-index: 1 !important;}
+.el-menu{border: none;}
+/*elment-ui 表格*/
+.el-table thead{color: #333;}
+.el-table__header th{background: #E5EAF0;}
+.el-table__header .cell{white-space: nowrap;}
+.lgy-table .bg{background: #E5EAF0;}
+.el-table__body tr.current-row>td {background: #CFE0F3;}
+.el-table td{padding: 10px 0;}
+.el-table .cell{line-height: 20px;}
+.el-table--enable-row-hover .el-table__body tr:hover>td { background: inherit; }
+.el-table--enable-row-hover .el-table__body tr.current-row:hover>td { background: #CFE0F3; }
+/*分页*/
+.lgy-table .paging{padding: 20px 0;text-align: left;}
+.lgy-table .paging .el-pagination,.lgy-table .paging .total{display: inline-block;vertical-align: middle;}
+.lgy-table .paging .btn-next,.lgy-table .paging .btn-prev,.lgy-table .paging .more,
+.lgy-table .paging .number{margin: 0;padding: 0;color: #7388A7;border: 1px solid #D7D8DA;border-width: 1px 1px 1px 0;font-weight: 500;}
+.lgy-table .paging .btn-prev{border-width: 1px;}
+.lgy-table .paging .number.active{box-shadow: 0 2px 4px 0 rgba(0,0,0,.2) inset;}
+.lgy-table .paging .el-pagination__total{margin-left: 24px;color: #999;}
+.lgy-table .paging .onePage{font-size: 13px;line-height: 28px;text-align: center;color: #999;}
 /*按钮*/
 .blueBtn, .defBtn{display: inline-block;min-width: 68px;height: 30px;border-radius: 6px;vertical-align: middle;
 	font-size: 12px;line-height: 30px;padding: 0 10px;min-width: 88px;}

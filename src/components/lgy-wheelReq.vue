@@ -22,7 +22,7 @@ var _this, data = {
 };
 
 function WheelReq(sv){
-	var beginTime = 0, overTime = 30*1000, timeout = false;
+	var beginTime = 0, overTime = 3*1000, timeout = false;
 	function req(){
 		let param = {
 			url: 'WheelReq',
@@ -35,9 +35,10 @@ function WheelReq(sv){
 			param.lastQueryFlag = 1;
 			timeout = true;
 		}
-		utils.post(param, response);
+		utils.post(param, response).catch(stop);
 	}
 	function response(res){
+		if(!res) return stop();
 		if(res.lastQueryFlag != 0&&!timeout){
 			return setTimeout(req, 2000);
 		}
@@ -45,6 +46,7 @@ function WheelReq(sv){
 	}
 	function stop(){
 		_this.show = false;
+		timeout = false;
 	}
 	this.start = function(){
 		beginTime = Date.now();

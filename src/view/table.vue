@@ -1,6 +1,7 @@
 <template>
 	<div class="myTable">
-		<lgy-list :custom="custom" :tableData="list" :title="title" :total="30" :tableRowClassName="tableRowClassName">
+		<lgy-list :custom="custom" :tableData="list" :title="title" :total="30" 
+			:tableRowClassName="tableRowClassName">
 		</lgy-list>
 	</div>
 </template>

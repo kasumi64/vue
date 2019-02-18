@@ -113,9 +113,8 @@ function ReqHttp(){
 	}
 	function error(e, fn){
 //		console.trace(e); //async await
-		if(!e) return null;
 		if(kit.isFn(fn)) fn(e);
-		return e;
+		return Promise.reject(e);
 	}
 }
 
@@ -257,7 +256,11 @@ function TipsConfirm(){
 
 kit.extend(exp, new TipsConfirm());
 
-
+exp.sleep = function (delay){
+	return new Promise((resolve, reject)=>{
+		setTimeout(resolve, delay||0);
+	});
+}
 
 
 

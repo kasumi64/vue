@@ -9,7 +9,7 @@
 			</el-table-column>-->
 			
 			<el-table-column v-if="custom" :label="customLabel" key>
-				<div v-for="o in custom" v-html="o.nodes" @click="o.click(scope.row,scope.$index,scope)" slot-scope="scope" key></div>
+				<div slot-scope="scope" v-for="o in custom" v-html="o.nodes" @click="o.click(scope.row,scope.$index,scope)" slot-scope="scope" key></div>
 			</el-table-column>
 		</el-table>
 		<!--<div class="paging">
